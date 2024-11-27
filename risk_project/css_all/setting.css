@@ -1,0 +1,374 @@
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: aliceblue;
+    background-size: cover;      /* ทำให้ภาพเต็มพื้นที่ */
+    background-repeat: no-repeat; /* ไม่ให้ภาพซ้ำ */
+    background-position: center; /* จัดภาพให้อยู่ตรงกลาง */
+}
+
+/* สไตล์สำหรับส่วน header */
+.header {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* จัดให้อยู่กลาง */
+    gap: 90px; /* ระยะห่างระหว่างลิงก์ เพิ่มเป็น 60px */
+    padding: 0; /* ลบ padding เพื่อความสมดุล */
+}
+
+/* ลิงก์ทั่วไป */
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px; /* ลด padding ของลิงก์ */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+    color: #ffffff;
+    background-color: #3793f0;
+    border-radius: 5px;
+}
+
+/* Dropdown container */
+.dropdown0, .dropdown1, .user-menu {
+    position: relative;
+}
+
+/* Dropdown ลิงก์ */
+.dropdown0 a, .dropdown1 a, .user-menu .user-icon {
+    cursor: pointer;
+}
+
+/* ซ่อนเนื้อหาใน dropdown เริ่มต้น */
+.dropdown-content0, .dropdown-content1, .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* แสดง dropdown ใต้ลิงก์ */
+    left: 0;
+    background-color: #ffffff;
+    min-width: 250px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/* Dropdown แสดงเมื่อ hover */
+.dropdown0:hover .dropdown-content0, 
+.dropdown1:hover .dropdown-content1, 
+.user-menu:hover .dropdown-content {
+    display: block;
+}
+
+/* เนื้อหาของลิงก์ใน dropdown */
+.dropdown-content0 a, .dropdown-content1 a, .dropdown-content a {
+    display: block;
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content0 a:hover, .dropdown-content1 a:hover, .dropdown-content a:hover {
+    background-color: #3793f0;
+    color: #ffffff;
+}
+
+/* ปรับตำแหน่ง dropdown */
+.dropdown-content0, .dropdown-content1 {
+    top: 100%;
+    left: 0;
+}
+
+/* สไตล์สำหรับ user-menu */
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.user-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dropdown-btn {
+    background-color: #3793f0;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-btn:hover {
+    background-color: #0066cc;
+}
+
+.icon {
+    display: flex;             /* ใช้ Flexbox เพื่อจัดเรียงในแนวนอน */
+    align-items: center;       /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
+    gap: 10px;                 /* ระยะห่างระหว่างรูปภาพกับข้อความ */
+}
+
+.icon img {
+    border-radius: 50%;        /* ทำให้รูปภาพเป็นวงกลม */
+    object-fit: cover;         /* ครอบให้พอดี */
+    display: block;            /* ป้องกันรูปภาพจากการเป็น inline */
+}
+
+.icon .text {
+    display: flex;             /* จัดข้อความในแนวตั้ง */
+    flex-direction: column;    /* ให้ข้อความซ้อนกันในแนวตั้ง */
+    align-items: flex-start;   /* จัดข้อความชิดซ้าย */
+    gap: 5px;                  /* ระยะห่างระหว่าง h1 และ a */
+}
+
+.icon h1 {
+    margin: 0;                 /* ลบระยะขอบ */
+    font-size: 24px;           /* ขนาดตัวอักษร */
+    font-weight: bold;         /* ตัวหนา */
+    color: #333;               /* สีตัวอักษร */
+}
+
+.icon a {
+    font-size: 14px;           /* ขนาดตัวอักษร */
+    color: #333;               /* สีข้อความ */
+    text-decoration: none;     /* ลบเส้นใต้ */
+}
+
+
+/* Note container */
+.note {
+    width: 100%;  /* ให้พื้นที่ 100% ของความกว้าง */
+    height: 80px; /* ความสูงของกล่อง */
+    background-color: aliceblue; /* สีพื้นหลัง */
+    overflow: hidden; /* ซ่อนเนื้อหาที่เกินจากขอบ */
+    border: 1px solid #ccc; /* กรอบ */
+    position: fixed;  /* ตำแหน่งอยู่คงที่ */
+    bottom: 50px;  /* ระยะห่างจากขอบล่างของหน้าจอ */
+    left: 0;  /* ตั้งตำแหน่งเริ่มต้นจากด้านซ้ายสุด */
+    z-index: 1001;  /* ให้เป็นเลเยอร์ที่สูงที่สุด */
+    display: flex;  /* ใช้ Flexbox เพื่อจัดการ layout */
+    align-items: center;  /* จัดแนวให้ข้อความและปุ่มอยู่ในแนวตั้ง */
+    justify-content: space-between;  /* แยกข้อความและปุ่มออกจากกัน */
+    padding: 0 10px;  /* เพิ่ม padding ซ้ายและขวา */
+    box-sizing: border-box;  /* รวม padding ในการคำนวณขนาด */
+}
+
+/* Scrolling text */
+.note #noteText {
+    position: absolute;  /* ตำแหน่งแบบ absolute */
+    white-space: nowrap;  /* ไม่ให้ข้อความขึ้นบรรทัดใหม่ */
+    animation: scrollText 20s linear infinite;  /* เพิ่มการเลื่อนข้อความ */
+    padding-left: 100%;  /* เริ่มต้นที่ขวาสุด */
+    font-size: 18px;  /* ขนาดตัวอักษร */
+    line-height: 50px;  /* ระยะห่างบรรทัด */
+    color: #000;  /* สีตัวอักษร */
+}
+
+/* Admin button styles */
+.note button {
+    background-color: #007BFF;  /* สีพื้นหลังของปุ่ม */
+    color: white;  /* สีตัวอักษร */
+    border: none;  /* ไม่มีกรอบ */
+    padding: 5px 10px;  /* ขนาดปุ่ม */
+    border-radius: 5px;  /* มุมโค้ง */
+    cursor: pointer;  /* แสดงเป็นมือเมื่อเลื่อนเมาส์ไปที่ปุ่ม */
+    font-size: 14px;  /* ขนาดตัวอักษร */
+    margin-left: 10px;  /* ระยะห่างจากปุ่มด้านซ้าย */
+}
+
+.note button:hover {
+    background-color: #0056b3;  /* เปลี่ยนสีเมื่อ hover */
+}
+
+/* Hidden form for editing */
+.note #noteForm {
+    display: none;  /* ซ่อนฟอร์มเริ่มต้น */
+    width: 100%;  /* ให้ฟอร์มมีความกว้าง 100% */
+    position: absolute;  /* ตั้งตำแหน่งเป็น absolute */
+    bottom: 0;  /* อยู่ที่ด้านล่างสุดของกล่อง */
+    left: 0;  /* เริ่มต้นที่ด้านซ้ายสุด */
+    background-color: aliceblue;  /* สีพื้นหลัง */
+    padding: 10px;  /* เพิ่ม padding */
+    box-sizing: border-box;  /* คำนวณขนาดรวม padding */
+    z-index: 1002;  /* ตั้งให้ฟอร์มอยู่บนปุ่ม */
+    border-top: 1px solid #ccc;  /* เส้นขอบด้านบน */
+}
+
+.note #noteTextarea {
+    width: calc(100% - 120px);  /* กว้าง 100% ลบปีกซ้ายขวาของปุ่ม */
+    height: 50px;  /* ความสูงของ textarea */
+    margin-right: 10px;  /* ระยะห่างด้านขวา */
+    font-size: 16px;  /* ขนาดตัวอักษร */
+    padding: 5px;  /* ขนาด padding */
+    border: 1px solid #ccc;  /* กรอบ */
+    border-radius: 5px;  /* มุมโค้ง */
+    resize: none;  /* ปิดการย่อขยายขนาด textarea */
+    box-sizing: border-box;  /* คำนวณขนาดรวม padding */
+}
+
+.note #noteForm button {
+    font-size: 14px;  /* ขนาดตัวอักษรปุ่ม */
+    margin: 0 5px;  /* ระยะห่างจากปุ่ม */
+}
+
+/* Keyframes for scrolling text */
+@keyframes scrollText {
+    0% {
+        left: 100%;  /* เริ่มต้นจากขวามา */
+    }
+    100% {
+        left: -100%;  /* เลื่อนจนสุดทางซ้าย */
+    }
+}
+
+
+
+/* Footer */
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #333;
+    text-align: center;
+    padding: 25px 0;
+    z-index: 1000;
+}
+
+.footer a {
+    color: white;
+    font-size: 16px;
+}
+
+
+
+
+/* ฟอร์มอัปโหลดรูปภาพ */
+.upload-form {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    top: 5%;
+}
+
+.upload-form h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.upload-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.upload-form button {
+    background-color: #3793f0;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-form button:hover {
+    background-color: #0066cc;
+}
+
+/* แกลเลอรีรูปภาพ */
+.image-gallery {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    top: 5%;
+}
+
+.image-gallery h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.image-gallery ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    list-style-type: none;
+}
+
+.image-gallery li {
+    margin: 10px;
+    position: relative;
+}
+
+.image-gallery img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.image-gallery button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: background-color 0.3s ease;
+}
+
+.image-gallery button:hover {
+    background-color: #e60000;
+    opacity: 1;
+}
+

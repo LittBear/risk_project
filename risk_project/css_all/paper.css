@@ -1,0 +1,288 @@
+/* ทั่วไป */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: aliceblue;
+}
+
+.header {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* จัดให้อยู่กลาง */
+    gap: 90px; /* ระยะห่างระหว่างลิงก์ เพิ่มเป็น 60px */
+    padding: 0; /* ลบ padding เพื่อความสมดุล */
+}
+
+/* ลิงก์ทั่วไป */
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px; /* ลด padding ของลิงก์ */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+    color: #ffffff;
+    background-color: #3793f0;
+    border-radius: 5px;
+}
+
+/* Dropdown container */
+.dropdown0, .dropdown1, .user-menu {
+    position: relative;
+}
+
+/* Dropdown ลิงก์ */
+.dropdown0 a, .dropdown1 a, .user-menu .user-icon {
+    cursor: pointer;
+}
+
+/* ซ่อนเนื้อหาใน dropdown เริ่มต้น */
+.dropdown-content0, .dropdown-content1, .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* แสดง dropdown ใต้ลิงก์ */
+    left: 0;
+    background-color: #ffffff;
+    min-width: 250px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/* Dropdown แสดงเมื่อ hover */
+.dropdown0:hover .dropdown-content0, 
+.dropdown1:hover .dropdown-content1, 
+.user-menu:hover .dropdown-content {
+    display: block;
+}
+
+/* เนื้อหาของลิงก์ใน dropdown */
+.dropdown-content0 a, .dropdown-content1 a, .dropdown-content a {
+    display: block;
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content0 a:hover, .dropdown-content1 a:hover, .dropdown-content a:hover {
+    background-color: #3793f0;
+    color: #ffffff;
+}
+
+/* ปรับตำแหน่ง dropdown */
+.dropdown-content0, .dropdown-content1 {
+    top: 100%;
+    left: 0;
+}
+
+/* สไตล์สำหรับ user-menu */
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.user-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dropdown-btn {
+    background-color: #3793f0;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-btn:hover {
+    background-color: #0066cc;
+}
+
+.icon {
+    display: flex;             /* จัดเรียงในแนวนอน */
+    align-items: center;       /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
+    gap: 15px;                 /* ระยะห่างระหว่างรูปและข้อความ */
+}
+
+.icon img {
+    border-radius: 50%;        /* ทำให้รูปภาพเป็นวงกลม */
+    object-fit: cover;         /* ครอบให้พอดี */
+    width: 60px;               /* ขนาดรูป */
+    height: 60px;              /* ขนาดรูป */
+}
+
+.icon .text {
+    display: flex;             /* จัดเรียงข้อความในแนวตั้ง */
+    flex-direction: column;    /* ให้ข้อความซ้อนกันในแนวตั้ง */
+    align-items: flex-start;   /* ชิดซ้าย */
+    gap: 5px;                  /* ระยะห่างระหว่างข้อความ */
+}
+
+.icon h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.icon a {
+    font-size: 14px;           /* ขนาดตัวอักษร */
+    color: #333;               /* สีข้อความ */
+    text-decoration: none;     /* ลบเส้นใต้ */
+    background-color: transparent !important; /* ไม่รับผลกระทบจาก hover */
+    border-radius: 0 !important;
+}
+
+
+.note {
+    width: 100%;
+    height: 50px;
+    background-color: aliceblue;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    position: fixed;
+    bottom: 50px; /* เลื่อนขึ้นมาจากด้านล่าง */
+    left: 0;
+    z-index: 1001;
+}
+
+.note span {
+    position: absolute;
+    white-space: nowrap;
+    animation: scrollText 15s linear infinite; /* การเลื่อนข้อความ */
+    padding-left: 100%;
+    font-size: 18px;
+    line-height: 50px;
+    color: #000;
+}
+
+@keyframes scrollText {
+    0% {
+        left: 100%; /* เริ่มจากขวาสุด */
+    }
+    100% {
+        left: -100%; /* เลื่อนจนหายไปทางซ้าย */
+    }
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #333;
+    text-align: center;
+    padding: 25px 0;
+    z-index: 1000;
+}
+
+.footer a {
+    color: white;
+    font-size: 16px;
+}
+
+
+
+
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 5%;
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.evaluation-section {
+    display: none;
+    margin-top: 30px;
+}
+
+.evaluation-section h2 {
+    font-size: 18px;
+    color: #444;
+    border-bottom: 2px solid #3793f0;
+    padding-bottom: 10px;
+}
+
+.evaluation-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.evaluation-section ul li {
+    background: #f3f3f3;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.evaluation-section ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.evaluation-section ul li:hover {
+    background: #3793f0;
+    color: #ffffff;
+}
+
+
+
+
